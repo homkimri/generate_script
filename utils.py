@@ -17,9 +17,8 @@ def generate_script(subject, video_lenght, creativity, api_key):
              脚本内容可以结合以下维基百科搜索出的信息，但仅作为参考，只结合相关的即可，对不相关的进行忽略：
              ```{wikipedia_search}```""")
     ])
-    #模型实例化
-    model = ChatOpenAI(openai_api_key=api_key,temperature=creativity,
-                       openai_api_base="https://api.aigc369.com/v1")
+    #模型实例化 如果使用第三方的API，添加参数openai_api_base="API地址"
+    model = ChatOpenAI(model="gpt-3.5-turbo",openai_api_key=api_key,temperature=creativity)
     # 标题链
     title_chain = title_template | model
     # 脚本链
